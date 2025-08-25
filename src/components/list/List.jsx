@@ -1,6 +1,6 @@
 import React from 'react'
 import "./list.css"
-import Userinfo from './userinfo/Userinfo'
+import Userinfo from './userInfo/Userinfo'
 import Chatlist from './chatList/Chatlist'
 const List = () => {
   return (
