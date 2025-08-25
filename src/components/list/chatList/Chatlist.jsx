@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./chatList.css";
-import AddUser from "./addUser/addUser";
+import AddUser from "./addUser/AddUser";
 import { useUserStore } from "../../lib/userStore";
 import { supabase } from "../../lib/supabase"; // Import supabase client
 import { useChatStore } from "../../lib/chatStore";
