@@ -9,6 +9,7 @@ import { useChatStore } from "./components/lib/chatStore";
 import { supabase } from "./components/lib/supabase"; // Import the Supabase client
 import Background from "./background";
 
+
 const App = () => {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
   const { chatId } = useChatStore();

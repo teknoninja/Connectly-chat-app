@@ -67,23 +67,23 @@ body {
   animation-delay: 18s;
 }
 .slideshow li:nth-child(5) span {
-  background: url("anime2.jpg") center / cover no-repeat;
+  background: url("../public/images/anime2.jpg") center / cover no-repeat;
   animation-delay: 24s;
 }
 .slideshow li:nth-child(6) span {
-  background: url("anime3.jpg") center / cover no-repeat;
+  background: url("../public/images/anime3.jpg") center / cover no-repeat;
   animation-delay: 30s;
 }
 .slideshow li:nth-child(7) span {
-  background: url("anime4.jpg") center / cover no-repeat;
+  background: url("../public/images/anime4.jpg") center / cover no-repeat;
   animation-delay: 36s;
 }
 .slideshow li:nth-child(8) span {
-  background: url("anime5.jpg") center / cover no-repeat;
+  background: url("../public/images/anime5.jpg") center / cover no-repeat;
   animation-delay: 42s;
 }
 .slideshow li:nth-child(9) span {
-  background: url("anime6.webp") center / cover no-repeat;
+  background: url("../public/images/anime6.webp") center / cover no-repeat;
   animation-delay: 48s;
 }
 
