@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./chatList.css";
-import AddUser from "./addUser/AddUser";
+import AddUser from "./addUser/AddUser"; // Correct import
 import { useUserStore } from "../../lib/userStore";
 import { supabase } from "../../lib/supabase"; // Import supabase client
 import { useChatStore } from "../../lib/chatStore";
@@ -50,7 +50,6 @@ const ChatList = () => {
         { event: '*', schema: 'public', table: 'user_chats', filter: `user_id=eq.${currentUser.id}` },
         (payload) => {
           // When any change occurs, re-fetch the entire chat list
-          // This ensures the UI is always in sync with the database
           fetchChats();
         }
       )
@@ -129,7 +128,9 @@ const ChatList = () => {
         </div>
       ))}
 
-      {addMode && <AddUser />}
+      {/* --- THIS IS THE CHANGE --- */}
+      {/* Pass the function to set addMode to false as the onClose prop */}
+      {addMode && <AddUser onClose={() => setAddMode(false)} />}
     </div>
   );
 };

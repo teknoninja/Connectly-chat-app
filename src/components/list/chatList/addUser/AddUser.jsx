@@ -1,12 +1,35 @@
 import "./addUser.css";
-import { supabase } from "../../../lib/supabase"; // Import supabase client
-import { useState } from "react";
+import { supabase } from "../../../lib/supabase";
+// 1. Import useRef and useEffect
+import { useState, useRef, useEffect } from "react"; 
 import { useUserStore } from "../../../lib/userStore";
 import { toast } from "react-toastify";
 
-const AddUser = () => {
+const AddUser = ({ onClose }) => {
   const [user, setUser] = useState(null);
   const { currentUser } = useUserStore();
+
+  // 2. Create a ref for the component's main div
+  const addUserRef = useRef(null);
+
+  // 3. Add useEffect to handle "click outside"
+  useEffect(() => {
+    // Function to call when a click is detected
+    const handleClickOutside = (event) => {
+      // If the ref is set and the click was *outside* the ref's element
+      if (addUserRef.current && !addUserRef.current.contains(event.target)) {
+        onClose(); // Call the onClose prop
+      }
+    };
+
+    // Add the event listener to the whole document
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup function: remove the listener when the component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]); // Re-run if onClose function changes
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -16,8 +39,6 @@ const AddUser = () => {
     if (!username) return;
 
     try {
-      // --- FIX IS HERE ---
-      // Changed the column name back to "username"
       const { data, error } = await supabase
         .from("users")
         .select()
@@ -25,7 +46,6 @@ const AddUser = () => {
         .single();
 
       if (error) {
-        // Handle case where no user is found, which is not an actual error
         if (error.code === 'PGRST116') {
             setUser(null);
             toast.info("No user found with that username.");
@@ -73,8 +93,13 @@ const AddUser = () => {
       if (currentUserChatError) throw currentUserChatError;
 
       toast.success("User added and chat started!");
-      setUser(null); // Clear the user after adding
+      setUser(null); 
       console.log(newChat.id)
+
+      // This part (from our last conversation) is still here
+      if (onClose) {
+        onClose();
+      }
 
     } catch (err) {
       console.log(err);
@@ -83,7 +108,8 @@ const AddUser = () => {
   };
 
   return (
-    <div className="addUser">
+    // 4. Attach the ref to the main div
+    <div className="addUser" ref={addUserRef}>
       <form onSubmit={handleSearch}>
         <input type="text" placeholder="Username" name="username" />
         <button>Search</button>
@@ -91,7 +117,6 @@ const AddUser = () => {
       {user && (
         <div className="user">
           <div className="detail">
-            {/* Also updated this to user.username */}
             <img src={user.avatar_url || "./avatar.png"} alt="" />
             <span>{user.username}</span>
           </div>

@@ -8,6 +8,7 @@ import upload from "../lib/upload";
 import { format } from "timeago.js";
 
 const Chat = () => {
+  
   const [messages, setMessages] = useState([]);
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
@@ -17,6 +18,7 @@ const Chat = () => {
   });
 
   const { currentUser } = useUserStore();
+  
   const {
     chatId,
     user,

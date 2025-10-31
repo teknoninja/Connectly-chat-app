@@ -12,7 +12,7 @@ import Background from "./background";
 
 const App = () => {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
-  const { chatId } = useChatStore();
+ const { chatId, isDetailOpen } = useChatStore();
 
   useEffect(() => {
     // Fetch user info on initial load
@@ -41,8 +41,7 @@ const App = () => {
       {currentUser ? (
         <>
           <List />
-          {chatId && <Chat />}
-          {chatId && <Detail />}
+         {chatId && <Chat />} {chatId && isDetailOpen && <Detail />}
         </>
       ) : (
         <Login />

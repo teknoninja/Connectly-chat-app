@@ -15,14 +15,14 @@ body {
 }
 
 .container {
-  width: 80vw;
+  width: 75vw;
   height: 90vh;
   background-color: rgba(17, 25, 40, 0.75);
   backdrop-filter: blur(19px) saturate(180%);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* --- Animated Background Styles --- */
