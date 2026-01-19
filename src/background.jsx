@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css'; // Or wherever your slideshow CSS is
+import './index.css'; // where your slideshow CSS is
 
 const Background = () => {
   return (

@@ -149,7 +149,12 @@ const Chat = () => {
         <div className="icons">
           <img src="./phone.png" alt="" />
           <img src="./video.png" alt="" />
-          <img src="./info.png" alt="" onClick={toggleDetail} />
+          
+          <div className="settings" onClick={toggleDetail} >
+            
+          <img src="./info.png" alt=""  />
+          <span>Settings</span>
+          </div>
         </div>
       </div>
       <div className="center">

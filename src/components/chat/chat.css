@@ -55,6 +55,23 @@
   height: 20px;
   cursor: pointer;
 }
+/* This targets the container holding the info icon and the text */
+.chat .top .icons .settings {
+  display: flex;
+  flex-direction: column; /* Stacks the icon and span vertically */
+  align-items: center;    /* Centers the text directly under the icon */
+  gap: 2px;               /* Adds a tiny space between the icon and text */
+  cursor: pointer;
+}
+
+/* This ensures the 'Settings' text looks clean and small */
+.chat .top .icons .settings span {
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  
+}
+
 
 .chat .center {
   padding: 20px;
@@ -135,10 +152,10 @@
 
 .chat .bottom input {
   flex: 1;
-  background-color: rgba(242, 245, 245, 0.5);
+  background-color: rgb(242, 245, 245);
   border: none;
   outline: none;
-  color: white;
+  color: rgb(11, 9, 9);
   padding: 20px;
   border-radius: 10px;
   font-size: 16px;
